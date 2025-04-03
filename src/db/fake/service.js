@@ -3,9 +3,9 @@ const DBService = require('../dbService');
 class FakeService extends DBService {
   constructor() {
     super();
-    this.customers = new Map();
-    // Initialize with 5 dummy customers
-    const dummyCustomers = [
+    this.students = new Map();
+    // Initialize with 5 dummy students
+    const dummyStudents = [
       { id: '1', name: 'John Doe', email: 'john.doe@example.com' },
       { id: '2', name: 'Jane Smith', email: 'jane.smith@example.com' },
       { id: '3', name: 'Bob Johnson', email: 'bob.johnson@example.com' },
@@ -13,17 +13,17 @@ class FakeService extends DBService {
       { id: '5', name: 'Charlie Wilson', email: 'charlie.wilson@example.com' },
     ];
 
-    dummyCustomers.forEach((customer) => {
-      this.customers.set(customer.id, customer);
+    dummyStudents.forEach((student) => {
+      this.students.set(student.id, student);
     });
   }
 
-  async getAllCustomers() {
-    return Array.from(this.customers.values());
+  async getAllStudents() {
+    return Array.from(this.students.values());
   }
 
-  async getCustomerById(id) {
-    return this.customers.get(id);
+  async getStudentById(id) {
+    return this.students.get(id);
   }
 }
 
