@@ -35,7 +35,9 @@ describe('StudentHttpHandler', () => {
   describe('GET /students', () => {
     it('should return all students', async () => {
       const students = [
-        { id: 1, name: 'John Doe', email: 'john@example.com' },
+        {
+          id: '1', name: 'John Doe',
+        },
       ];
       mockController.getAll.mockResolvedValue(students);
 
@@ -50,7 +52,9 @@ describe('StudentHttpHandler', () => {
 
   describe('GET /students/:id', () => {
     it('should return a student by ID', async () => {
-      const student = { id: 1, name: 'John Doe', email: 'john@example.com' };
+      const student = {
+        id: '1', name: 'John Doe',
+      };
       mockController.getById.mockResolvedValue(student);
 
       const response = await request(app)

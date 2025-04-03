@@ -13,7 +13,9 @@ describe('StudentController', () => {
   });
 
   test('should get all students', async () => {
-    const students = [{ id: 1, name: 'John Doe', email: 'john@example.com' }];
+    const students = [{
+      id: '1', name: 'John Doe',
+    }];
     mockService.getAllStudents.mockResolvedValue(students);
 
     const result = await controller.getAll();
@@ -22,7 +24,9 @@ describe('StudentController', () => {
   });
 
   test('should get student by ID', async () => {
-    const student = { id: 1, name: 'John Doe', email: 'john@example.com' };
+    const student = {
+      id: '1', name: 'John Doe',
+    };
     mockService.getStudentById.mockResolvedValue(student);
 
     const result = await controller.getById(1);
