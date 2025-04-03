@@ -8,9 +8,6 @@ describe('CustomerController', () => {
     mockService = {
       getAllCustomers: jest.fn(),
       getCustomerById: jest.fn(),
-      createCustomer: jest.fn(),
-      updateCustomer: jest.fn(),
-      deleteCustomer: jest.fn(),
     };
     controller = new CustomerController(mockService);
   });
@@ -37,31 +34,5 @@ describe('CustomerController', () => {
     mockService.getCustomerById.mockResolvedValue(null);
 
     await expect(controller.getById(1)).rejects.toThrow('Customer not found');
-  });
-
-  test('should create a customer', async () => {
-    const newCustomer = { id: 1, name: 'John Doe', email: 'john@example.com' };
-    mockService.createCustomer.mockResolvedValue(newCustomer);
-
-    const result = await controller.create('John Doe', 'john@example.com');
-    expect(result).toEqual(newCustomer);
-    expect(mockService.createCustomer).toHaveBeenCalledWith('John Doe', 'john@example.com');
-  });
-
-  test('should update a customer', async () => {
-    const updatedCustomer = { id: 1, name: 'John Doe', email: 'john.doe@example.com' };
-    mockService.updateCustomer.mockResolvedValue(updatedCustomer);
-
-    const result = await controller.update(1, 'John Doe', 'john.doe@example.com');
-    expect(result).toEqual(updatedCustomer);
-    expect(mockService.updateCustomer).toHaveBeenCalledWith(1, 'John Doe', 'john.doe@example.com');
-  });
-
-  test('should delete a customer', async () => {
-    mockService.deleteCustomer.mockResolvedValue();
-
-    const result = await controller.delete(1);
-    expect(result).toEqual({ message: 'Customer deleted' });
-    expect(mockService.deleteCustomer).toHaveBeenCalledWith(1);
   });
 });

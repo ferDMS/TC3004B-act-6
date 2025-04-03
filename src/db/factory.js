@@ -1,14 +1,8 @@
-const PostgresService = require('./postgres/service');
-const MongoService = require('./mongo/service');
 const FakeService = require('./fake/service');
 
 class DBFactory {
-  static create(type, connectionString) {
+  static create(type, _connectionString) {
     switch (type.toLowerCase()) {
-      case 'postgres':
-        return new PostgresService(connectionString);
-      case 'mongo':
-        return new MongoService(connectionString);
       case 'fake':
         return new FakeService();
       default:

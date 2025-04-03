@@ -15,8 +15,5 @@ const customerHandler = new CustomerHttpHandler(customerController);
 // Set up routes with bound handler methods
 router.get('/', customerHandler.getAllCustomers.bind(customerHandler));
 router.get('/:id', customerHandler.getCustomerById.bind(customerHandler));
-router.post('/', customerHandler.createCustomer.bind(customerHandler));
-router.put('/:id', customerHandler.updateCustomer.bind(customerHandler));
-router.delete('/:id', customerHandler.deleteCustomer.bind(customerHandler));
 
 module.exports = router;
